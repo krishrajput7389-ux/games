@@ -24,7 +24,7 @@ jobs:
       - name: Publish to Itch.io
         uses: manleydev/butler-publish-itchio-action@master
         env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          BUTLER_CREDENTIALS: ${{ secrets.Monster_on_Road }}
           CHANNEL: html
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           PACKAGE: ${{ steps.export.outputs.archive_directory }}/Web.zip
