@@ -8,17 +8,16 @@ on:
 jobs:
   export_and_deploy:
     runs-on: ubuntu-latest
+    name: Export and Publish Game
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Export Godot Web Build
         id: export
-        uses: firebelley/godot-export@v2
+        uses: abarichello/godot-ci@v2
         with:
-          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_export_templates.tpz
-          relative_project_path: ./
+          name: web
           archive_output: true
 
       - name: Publish to Itch.io
@@ -27,4 +26,4 @@ jobs:
           BUTLER_CREDENTIALS: ${{ secrets.MONSTER_ON_ROAD }}
           CHANNEL: html
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
-          PACKAGE: ${{ steps.export.outputs.archive_directory }}/Web.zip
+          PACKAGE: ${{ steps.export.outputs.archive_directory }}/web.zip
