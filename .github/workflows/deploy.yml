@@ -3,7 +3,7 @@ name: Deploy to Itch.io
 on:
   push:
     branches:
-      - main # Or 'master' depending on your default branch name
+      - main # Change this to 'master' if your default branch is named master
 
 jobs:
   export_and_deploy:
@@ -24,7 +24,7 @@ jobs:
       - name: Publish to Itch.io
         uses: manleydev/butler-publish-itchio-action@master
         env:
-          BUTLER_CREDENTIALS: ${{ secrets.Monster_on_Road }}
+          BUTLER_CREDENTIALS: ${{ secrets.MONSTER_ON_ROAD }}
           CHANNEL: html
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           PACKAGE: ${{ steps.export.outputs.archive_directory }}/Web.zip
